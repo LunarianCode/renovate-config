@@ -1,0 +1,11 @@
+{
+  "name": "renovate-config",
+  "private": true,
+  "description": "The shared Renovate preset and the check that validates it.",
+  "scripts": {
+    "check": "renovate-config-validator --strict --no-global default.json && renovate-config-validator --strict --no-global renovate.json"
+  },
+  "devDependencies": {
+    "renovate": "44.138.0"
+  }
+}
