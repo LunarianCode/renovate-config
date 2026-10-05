@@ -1,0 +1,97 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "The update policy every LunarianCode, LunarianGaming and LunarianGames repository extends.",
+  "extends": [
+    "config:best-practices",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "timezone": "America/New_York",
+  "schedule": [
+    "* 0-5 1 * *"
+  ],
+  "dependencyDashboard": true,
+  "semanticCommits": "enabled",
+  "platformAutomerge": false,
+  "automergeType": "pr",
+  "automergeStrategy": "squash",
+  "ignoreTests": false,
+  "rebaseWhen": "behind-base-branch",
+  "minimumReleaseAge": "7 days",
+  "internalChecksFilter": "strict",
+  "osvVulnerabilityAlerts": true,
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 0,
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/examples/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**",
+    "kit/**"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": [
+      "* 0-5 1 * *"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Patch, digest and pin updates go in one monthly pull request, which Renovate merges once every check has passed.",
+      "matchUpdateTypes": [
+        "patch",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true
+    },
+    {
+      "description": "Minor updates join that pull request, except below 1.0, where a minor can break.",
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchCurrentVersion": "!/^v?0\\./",
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true
+    },
+    {
+      "description": "A minor below 1.0 waits for approval on the Dependency Dashboard, like a major.",
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchCurrentVersion": "/^v?0\\./",
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Each major opens its own pull request only when ticked on the Dependency Dashboard, and a session merges it once the operator approves.",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Docker images follow their tag through Watchtower, so no digest is pinned.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "pinDigests": false
+    },
+    {
+      "description": "The Godot kit's workflow refs move only through kit_sync update, which rewrites kit/, kit.lock and the refs together.",
+      "matchDepNames": [
+        "LunarianGaming/godot-kit"
+      ],
+      "enabled": false
+    }
+  ]
+}
