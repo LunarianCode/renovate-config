@@ -1,9 +1,14 @@
 name: check
 
+# Runs on pull requests and by hand, not again on main: the squash merge lands
+# the tree the pull request's run tested.
 on:
   pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
