@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "The update policy every LunarianCode, LunarianGaming and LunarianGames repository extends.",
+  "description": "The update policy every LunarianCode and LunarianCoding repository extends.",
   "extends": [
     "config:best-practices",
     ":pinAllExceptPeerDependencies"
@@ -89,7 +89,7 @@
     {
       "description": "The Godot kit's workflow refs move only through kit_sync update, which rewrites kit/, kit.lock and the refs together.",
       "matchDepNames": [
-        "LunarianGaming/godot-kit"
+        "LunarianCoding/godot-kit"
       ],
       "enabled": false
     }
