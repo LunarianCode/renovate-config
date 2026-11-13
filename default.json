@@ -9,7 +9,9 @@
   "schedule": [
     "* 0-5 1 * *"
   ],
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "semanticCommits": "enabled",
   "platformAutomerge": false,
   "automergeType": "pr",
