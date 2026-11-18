@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "The update policy every LunarianCode and LunarianCoding repository extends.",
+  "description": "The update policy each adopting repository extends.",
   "extends": [
     "config:best-practices",
     ":pinAllExceptPeerDependencies"
